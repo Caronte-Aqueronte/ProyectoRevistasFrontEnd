@@ -1,0 +1,8 @@
+<h3 style="font-weight: 600; margin-top: 10px;">Tags disponibles (click sobre la que desea agregar)</h3>
+<app-tag-existente-para-usuario [datosTag] = "tag" *ngFor="let tag of tags" style="margin-left: 5px;"></app-tag-existente-para-usuario>
+<div [hidden]="banderaAlerta == false" class="alert alert-success mt-2" role="alert">
+    {{mensajeDeAlerta}}
+</div>
+<div [hidden]="banderaError == false" class="alert alert-danger mt-2" role="alert">
+    {{mensajeDeAlerta}}
+</div>

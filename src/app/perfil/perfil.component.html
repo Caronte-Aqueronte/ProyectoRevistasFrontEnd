@@ -1,0 +1,40 @@
+<div class="container mt-5" style="width: 800px;">
+    <div class="row">
+        <div class="col-sm">
+            <h1>{{nombreEditor}}</h1>
+            <div style="float: left;">
+                <div class="row">
+                    <div class="col-sm">
+                        <img class="miniatura" src="{{urlFoto}}">
+                    </div>
+                </div>
+            </div>
+            <div style="float: left; margin-left: 30px;">
+                <div style="margin-top: 10px;">
+                    <div class="titulos">
+                        <label>Descripción:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{perfil.descripcion}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Hobbies:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{perfil.hobbies}}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+                <label for="tagsDisponibles" class="paraLabels mt-2">Tags del editor</label>
+                <div></div>
+                <button *ngFor="let tag of tagsUsuario" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                    class="btn btn-info" style="margin-left: 5px; margin-top: 10px;">
+                    {{tag.nombreTag}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

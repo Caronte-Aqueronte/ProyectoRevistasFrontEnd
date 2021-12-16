@@ -1,0 +1,63 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="formEditarPerfil" (ngSubmit)="guardarCambios()"
+                [ngClass]="{'was-validated': !formEditarPerfil.pristine}">
+                <div class="card" Style = "width: 200px;height: 200px;">
+                    <img [src]="urlFoto">
+                </div>
+                <div class="mb-3 mt-2">
+                    <label for="usuario" class="form-label">Selecciona una foto de perfil</label>
+                    <input type="file" class="form-control" id="usuario" accept=".jpg, .png"
+                        (change)="archivoCambiado($event)">
+                    <button type="button" name="btnEntrar" class="btn btn-outline-primary mt-2"
+                        (click)="guardarFotoDePerfil()">
+                        <i class='bx bx-user-circle'></i> Editar foto de perfil
+                    </button>
+                    <div [hidden]="banderaErrorFotoPerfil == false" class="alert alert-danger mt-2" role="alert">
+                        {{mensajeDeAlerta}}
+                    </div>
+                    <div [hidden]="banderaAceptacionFotoPerfil == false" class="alert alert-success mt-2" role="alert">
+                        {{mensajeDeAlerta}}
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="usuario" class="form-label">Tu usuario</label>
+                    <input type="text" class="form-control" name="usuario" id="usuario" placeholder="Tu usuario"
+                        formControlName="usuario" readonly />
+                </div>
+                <div class="mb-3">
+                    <label for="exampleFormControlTextarea1" class="form-label">Tu descripcion</label>
+                    <textarea class="form-control" id="descripcion" rows="3" placeholder="Tu descripcion"
+                        formControlName="descripcion"></textarea>
+                    <div [hidden]="formEditarPerfil.controls.descripcion.valid || formEditarPerfil.controls.descripcion.pristine"
+                        class="alert alert-danger  mt-2" role="alert">
+                        La descripcion es requerida.
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="hobbies" class="form-label">Tus hobbies</label>
+                    <input type="text" class="form-control" name="hobbies" id="hobbies" placeholder="Tus hobbies"
+                        formControlName="hobbies" />
+                    <div [hidden]="formEditarPerfil.controls.hobbies.valid || formEditarPerfil.controls.hobbies.pristine"
+                        class="alert alert-danger  mt-2" role="alert">
+                        Los hobbies son requeridos
+                    </div>
+                </div>
+                <div [hidden]="banderaAceptacion == false" class="alert alert-success mt-2" role="alert">
+                    {{mensajeDeAlerta}}
+                </div>
+                <div [hidden]="banderaError == false" class="alert alert-danger mt-2" role="alert">
+                    {{mensajeDeAlerta}}
+                </div>
+                <app-contenedor-tags-del-usuario></app-contenedor-tags-del-usuario>
+                <div></div>
+                <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
+                    [disabled]="formEditarPerfil.invalid">
+                    <i class='bx bxs-save'></i> Guardar infomacion de usuario
+                </button>
+                <app-contenedor-tags-para-usuario></app-contenedor-tags-para-usuario>
+            </form>
+        </div>
+    </div>
+</div>

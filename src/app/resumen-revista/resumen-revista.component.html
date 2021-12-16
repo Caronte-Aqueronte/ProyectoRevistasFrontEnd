@@ -1,0 +1,66 @@
+<div class="container mt-5" style="width: 800px;">
+    <div class="row">
+        <div class="col-sm">
+            <h1>{{resumenRevista.nombreRevista}}</h1>
+            <div style="float: left;">
+                <div class="row">
+                    <div class="col-sm">
+                        <img class="miniatura" src="{{url}}">
+                    </div>
+                </div>
+            </div>
+            <div style="float: left; margin-left: 30px;">
+                <div style="margin-top: 10px;">
+                    <div class="titulos">
+                        <label>Descripción:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.descripcion}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Categoria:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.categoria}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Usuario creador:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.usuarioCreador}}</p>
+                    </div>
+                    <div class="contenido" style="margin-left: 20px;">
+                        <button (click)="dirigirAPerfil()" class="btn btn-outline-primary">Ver perfil del
+                            editor</button>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Numero de likes:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.numeroDeLikes}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <button id="redirirgirSuscripcion" name="redirirgirSuscripcion" type="button"
+                        class="btn btn-info" style="margin-top: 10px;" (click)="redirirgirSuscripcion()">
+                        Suscribirse a esta revista
+                    </button>
+                </div>
+            </div>
+            <div style="clear: both;">
+                <label for="tagsDisponibles" class="paraLabels mt-2">Tags de la revista</label>
+                <div></div>
+                <button *ngFor="let tag of tags" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                    class="btn btn-info" style="margin-left: 5px; margin-top: 10px;">
+                    {{tag.nombreTag}}
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

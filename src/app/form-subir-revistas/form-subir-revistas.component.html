@@ -1,0 +1,130 @@
+<div class="container mt-5" style="width: 800px;">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="formSubirRevista" (ngSubmit)="subirRevista()"
+                [ngClass]="{'was-validated': !formSubirRevista.pristine}">
+                <h1>Publicar una revista</h1>
+                <p>Para registrar una revista como edicion de otra debera escribir el nombre de su revista raiz.</p>
+                 <!--Seleccionador de archivos para el pdf de la revista-->
+                <div class="mb-3 mt-2">
+                    <label for="revista" class="paraLabels">Selecciona la revista que deseas publicar</label>
+                    <input type="file" class="form-control" id="revista" accept=".pdf" formControlName="revista"
+                        (change)="archivoCambiado($event)">
+                </div>
+                <!--Seleccionador de archivos para la miniatura de la revista-->
+                <div class="mb-3 mt-2">
+                    <label for="miniatura" class="paraLabels">Selecciona una miniatura para tu revista</label>
+                    <input type="file" class="form-control" id="miniatura" accept=".jpg, .png" formControlName="miniatura"
+                        (change)="miniaturaCambiada($event)">
+                </div>
+                <div class="mb-3">
+                    <label for="nombreRevista" class="paraLabels">Nombre de la revista</label>
+                    <input type="text" class="form-control" name="nombreRevista" id="nombreRevista"
+                        placeholder="Nombre de la revista" formControlName="nombreRevista" />
+                </div>
+                <div class="mb-3">
+                    <label for="descripcionRevista" class="paraLabels">Descripcion de tu revista</label>
+                    <textarea class="form-control" name="descripcionRevista" id="descripcionRevista" rows="3" placeholder="Descripcion de tu revista"
+                        formControlName="descripcionRevista"></textarea>
+                </div>
+                <label for="cars" class="paraLabels">Elija la categoria</label>
+                <div></div>
+                <select name="cars" id="cars" formControlName="categoria" class="mt-2">
+                    <!--aqui generamos las distintas opciones del ComboBox apartir de un array que se inicializa con una peticion al backend -->
+                    <option class="form-control" *ngFor="let categoria of categorias"
+                        value="{{categoria.nombreCategoria}}">{{categoria.nombreCategoria}}</option>
+                </select>
+                <div class="mb-3">
+                    <label for="costoDeSuscripcion" class="paraLabels mt-2">Costo de suscripcion (valor x <= 0 se tomara
+                            como gratuita la suscripcion)</label>
+                            <input type="number" class="form-control" name="costoDeSuscripcion" id="costoDeSuscripcion"
+                                placeholder="Costo de suscripcion" min="0" formControlName="costoDeSuscripcion" />
+                </div>
+                <!--Radio buttons para eleccion de estado de suscripciones-->
+                <label class="paraLabels">Estado de suscripciones de tu revista</label>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="radio" name="estadoSuscripcion" value="Activo"
+                        formControlName="estadoSuscripcion" checked="true">
+                    <label class="form-check-label">
+                        Activo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="estadoSuscripcion" value="Inactivo"
+                        formControlName="estadoSuscripcion">
+                    <label class="form-check-label">
+                        Inactivo
+                    </label>
+                </div>
+                <!--Radio buttons para eleccion de estado de comentarios-->
+                <label class="paraLabels">Estado de los comentarios de tu revista</label>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="radio" name="estadoComentarios" value="Activo"
+                        formControlName="estadoComentarios" checked="true">
+                    <label class="form-check-label">
+                        Activo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="estadoComentarios" value="Inactivo"
+                        formControlName="estadoComentarios">
+                    <label class="form-check-label">
+                        Inactivo
+                    </label>
+                </div>
+                <!--Radio buttons para eleccion de estado de likes-->
+                <label class="paraLabels">Estado de los likes de tu revista</label>
+                <div class="form-check mt-2">
+                    <input class="form-check-input" type="radio" name="estadoLikes" value="Activo"
+                        formControlName="estadoLikes" checked="true">
+                    <label class="form-check-label">
+                        Activo
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" name="estadoLikes" value="Inactivo"
+                        formControlName="estadoLikes">
+                    <label class="form-check-label">
+                        Inactivo
+                    </label>
+                </div>
+                <div>
+                    <label for="tagsDisponibles" class="paraLabels mt-2">Tags disponibles</label>
+                    <div></div>
+                    <button *ngFor="let tag of tagsExistentes" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                        (click)="deTagExistenteATagRevista(tag.nombreTag)" class="btn btn-info"
+                        style="margin-left: 5px;">
+                        {{tag.nombreTag}}
+                    </button>
+                </div>
+                <div>
+                    <label for="tagsDisponibles" class="paraLabels mt-2">Tags para tu revista</label>
+                    <div></div>
+                    <button *ngFor="let tag of tagsRevista" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                        (click)="deTagRevistaATagExistente(tag.nombreTag)" class="btn btn-info"
+                        style="margin-left: 5px;">
+                        {{tag.nombreTag}}
+                    </button>
+                </div>
+                <!--Input para elegir la fecha de publicacion-->
+                <div class="mb-3">
+                    <label for="fechaDePublicacion" class="paraLabels mt-2">Fecha de publicacion</label>
+                    <input type="date" class="form-control" name="fechaDePublicacion" id="fechaDePublicacion"
+                        placeholder="Fecha de publicacion" formControlName="fechaDePublicacion" />
+                </div>
+                <!--Boton que sube todo el formulario para ser controlado por el ts-->
+                <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
+                    [disabled]="formSubirRevista.invalid">
+                    <i class='bx bxs-save'></i> Subir revista
+                </button>
+                <!--Mensajes de confirmacion de la publicacion o no de ua revista-->
+                <div [hidden]="banderaError == false" class="alert alert-danger mt-2" role="alert">
+                    {{mensajeDeAlerta}}
+                </div>
+                <div [hidden]="banderaAceptacion == false" class="alert alert-success mt-2" role="alert">
+                    {{mensajeDeAlerta}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container mt-5" style="width: 800px;">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="formSuscripcion" (ngSubmit)="suscribirse()"
+                [ngClass]="{'was-validated': !formSuscripcion.pristine}">
+                <div>
+                    <h1>{{"Suscribirse a la revista: \""+nombreRevista+"\""}}</h1>
+                </div>
+                <div style="clear: both;">
+                    <div style="clear: both;" class="mt-3">
+                        <div style="clear: both;" >
+                            <label for="cars">Seleccione una forma de pago</label>
+                        </div>                        
+                        <select name="cars" id="cars" formControlName="metodo" class="mt-3" [(ngModel)]="metodoPago"
+                            (change)="cambioDeMetodo()">
+                            <!--Estas son las opciones del combobox que para elegir la forma de pago-->
+                            <option class="form-control" value="Anual">Anual</option>
+                            <option class="form-control" value="Mensual">Mensual</option>
+                        </select>                        
+                    </div>
+                    <div style="clear: both;" class="mt-3">
+                        <label for="costo">Costo por suscripcion</label>
+                        <h2 class="mt-3" id="costo">{{"Q"+costoPorSuscripcionAMostrar}}</h2>
+                    </div>
+                    <div style="clear: both;" class="mt-3">
+                        <input type="date" id="fecha" formControlName="fecha" class="form-control"
+                            placeholder="Selecciona la fecha de suscripcion"/>
+                    </div>
+
+                    <!--Estos son los divs que contienen mensajes de requerido-->
+                    <div [hidden]="formSuscripcion.controls.fecha.valid || formSuscripcion.controls.fecha.pristine"
+                        class="alert alert-danger mt-3" role="alert" style="clear: both;">
+                        La fecha es requerida.
+                    </div>
+                    <div style="clear: both;" class="mt-3">
+                        <!--Boton que sube todo el formulario para ser controlado por el ts-->
+                        <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
+                            [disabled]="formSuscripcion.invalid">
+                            <i class='bx bxs-save'></i> Suscribirse
+                        </button>
+                    </div>
+                    <!--Mensajes de confirmacion de la publicacion o no de ua revista-->
+                    <div [hidden]="banderaError == false" class="alert alert-danger mt-3" role="alert"
+                        style="clear: both;">
+                        {{mensajeDeAlerta}}
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
