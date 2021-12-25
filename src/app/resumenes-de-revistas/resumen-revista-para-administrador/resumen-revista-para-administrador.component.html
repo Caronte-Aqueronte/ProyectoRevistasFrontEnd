@@ -1,0 +1,91 @@
+<div class="container mt-5" style="width: 800px;">
+    <div class="row">
+        <div class="col-sm">
+            <h1>{{resumenRevista.nombreRevista}}</h1>
+            <div style="float: left;">
+                <div class="row">
+                    <div class="col-sm">
+                        <img class="miniatura" src="{{url}}">
+                    </div>
+                </div>
+            </div>
+            <div style="float: left; margin-left: 30px;">
+                <div style="margin-top: 10px;">
+                    <div class="titulos">
+                        <label>Descripción:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.descripcion}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Categoria:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.categoria}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Usuario creador:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.usuarioCreador}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Numero de likes:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.numeroDeLikes}}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+                <label for="tagsDisponibles" class="paraLabels mt-2">Tags de la revista</label>
+                <div></div>
+                <button *ngFor="let tag of tags" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                    class="btn btn-info" style="margin-left: 5px; margin-top: 10px;">
+                    {{tag.nombreTag}}
+                </button>
+            </div>
+            <div style="margin-top: 1cm;">
+                <form [formGroup]="formAsignarCosto" (ngSubmit)="asignarCosto()"
+                    [ngClass]="{'was-validated': !formAsignarCosto.pristine}">
+                    <div class="mb-3">
+                        <label for="usuario" class="form-label">Costo por dia</label>
+                        <input type="number" min="0" class="form-control" name="costo" id="costo"
+                            placeholder="Ingrese su usuario" formControlName="costo" />
+                        <div [hidden]="formAsignarCosto.controls.costo.valid || formAsignarCosto.controls.costo.pristine"
+                            class="alert alert-danger mt-2" role="alert">
+                            El costo es requerido.
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fecha" class="form-label">Contraseña</label>
+                        <input type="date" class="form-control" name="fecha" id="fecha" formControlName="fecha" />
+                        <div [hidden]="formAsignarCosto.controls.fecha.valid || formAsignarCosto.controls.fecha.pristine"
+                            class="alert alert-danger mt-2" role="alert">
+                            La contraseña es requerida.
+                        </div>
+                    </div>
+
+                    <button type="submit" name="btnEntrar" [disabled]="formAsignarCosto.invalid"
+                        class="btn btn-outline-primary mt-2">
+                        Asignar costo por dia
+                    </button>
+                    <div [hidden]="banderaError == false"
+                        class="alert alert-danger mt-2" role="alert">
+                        {{mensajeConfirmacion}}
+                    </div>
+                    <div [hidden]="banderaAcierto == false"
+                        class="alert alert-sucess mt-2" role="alert">
+                       {{mensajeConfirmacion}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,150 @@
+<div class="container mt-5" style="width: 800px;">
+    <div class="row">
+        <div class="col-sm">
+            <h1>{{resumenRevista.nombreRevista}}</h1>
+            <div style="float: left;">
+                <div class="row">
+                    <div class="col-sm">
+                        <img class="miniatura" src="{{url}}">
+                    </div>
+                </div>
+            </div>
+            <div style="float: left; margin-left: 30px;">
+                <div style="margin-top: 10px;">
+                    <div class="titulos">
+                        <label>Descripción:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.descripcion}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Categoria:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.categoria}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Usuario creador:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.usuarioCreador}}</p>
+                    </div>
+                </div>
+                <div style="clear: both;">
+                    <div class="titulos">
+                        <label>Numero de likes:</label>
+                    </div>
+                    <div class="contenido">
+                        <p>{{resumenRevista.numeroDeLikes}}</p>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;">
+                <label for="tagsDisponibles" class="paraLabels mt-2">Tags de tu revista</label>
+                <div></div>
+                <button *ngFor="let tag of tags" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                    class="btn btn-info" style="margin-left: 5px; margin-top: 10px;">
+                    {{tag.nombreTag}}
+                </button>
+            </div>
+            <div style="margin-top: 1cm; float: left;">
+                <div>
+                    <label class="paraLabels">Estado actual de suscripciones de tu revista</label>
+                </div>
+                <div style="clear: both;">
+                    <button name="tagsDisponibles" type="button" class="btn btn-info"
+                        style="margin-left: 5px; margin-top: 10px;">
+                        {{estadoActualSuscripciones}}
+                    </button>
+                </div>
+                <div class="mt-3">
+                    <label class="paraLabels">Estado actual de comentarios de tu revista</label>
+                </div>
+                <div style="clear: both;">
+                    <button name="tagsDisponibles" type="button" class="btn btn-info"
+                        style="margin-left: 5px; margin-top: 10px;">
+                        {{estadoActualComentarios}}
+                    </button>
+                </div>
+                <div class="mt-3">
+                    <label class="paraLabels">Estado actual de likes de tu revista</label>
+                </div>
+                <div style="clear: both;">
+                    <button name="tagsDisponibles" type="button" class="btn btn-info"
+                        style="margin-left: 5px; margin-top: 10px;">
+                        {{estadoActualLikes}}
+                    </button>
+                </div>
+            </div>
+            <div style="margin-top: 1cm; margin-left: 2cm; float: left;">
+                <form [formGroup]="formConfiguracion" (ngSubmit)="guardarInformacion()"
+                    [ngClass]="{'was-validated': formConfiguracion.pristine}">
+                    <label class="paraLabels">Cambia el estado de suscripciones de tu revista</label>
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="radio" name="estadoSuscripcion" value="Activo"
+                            formControlName="estadoSuscripcion">
+                        <label class="form-check-label">
+                            Activo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="estadoSuscripcion" value="Inactivo"
+                            formControlName="estadoSuscripcion">
+                        <label class="form-check-label">
+                            Inactivo
+                        </label>
+                    </div>
+                    <!--Radio buttons para eleccion de estado de comentarios-->
+                    <label class="paraLabels">Cambia el estado de los comentarios de tu revista</label>
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="radio" name="estadoComentarios" value="Activo"
+                            formControlName="estadoComentarios">
+                        <label class="form-check-label">
+                            Activo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="estadoComentarios" value="Inactivo"
+                            formControlName="estadoComentarios">
+                        <label class="form-check-label">
+                            Inactivo
+                        </label>
+                    </div>
+                    <!--Radio buttons para eleccion de estado de likes-->
+                    <label class="paraLabels">Cambia el estado de los likes de tu revista</label>
+                    <div class="form-check mt-2">
+                        <input class="form-check-input" type="radio" name="estadoLikes" value="Activo"
+                            formControlName="estadoLikes">
+                        <label class="form-check-label">
+                            Activo
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="estadoLikes" value="Inactivo"
+                            formControlName="estadoLikes">
+                        <label class="form-check-label">
+                            Inactivo
+                        </label>
+                    </div>
+                    <button type="submit" name="btnEntrar" [disabled]="formConfiguracion.invalid"
+                        class="btn btn-outline-primary mt-2">
+                        Guardar configuracion
+                    </button>
+                    <!--Cajas con los mensajes de confirmacion o de error al hacer submit al form-->
+                    <div [hidden]="banderaError == false" class="alert alert-danger mt-2" role="alert">
+                        {{mensajeConfirmacion}}
+                    </div>
+                    <div [hidden]="banderaAcierto == false" class="alert alert-success mt-2" role="alert">
+                        {{mensajeConfirmacion}}
+                    </div>
+                    <div style="margin-bottom: 2cm;"></div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>

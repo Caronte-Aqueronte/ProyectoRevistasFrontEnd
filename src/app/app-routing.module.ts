@@ -3,16 +3,25 @@ import { LoginComponent } from './login/login.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GuardMenuLectorGuard } from 'src/Guards/guard-menu-lector.guard';
-import { EditarPerfilFormComponent } from './editar-perfil-form/editar-perfil-form.component';
-import { CrearUsuarioComponent } from './crear-usuario/crear-usuario.component';
+import { EditarPerfilFormComponent } from './forms/editar-perfil-form/editar-perfil-form.component';
+import { CrearUsuarioComponent } from './forms/crear-usuario/crear-usuario.component';
 import { MenuEditorComponent } from './menus/menu-editor/menu-editor.component';
 import { GuardMenuEditorGuard } from 'src/Guards/guard-menu-editor.guard';
-import { FormSubirRevistasComponent } from './form-subir-revistas/form-subir-revistas.component';
-import { ContenedorCardRevistaComponent } from './contenedor-card-revista/contenedor-card-revista.component';
-import { ResumenRevistaComponent } from './resumen-revista/resumen-revista.component';
+import { FormSubirRevistasComponent } from './forms/form-subir-revistas/form-subir-revistas.component';
+import { ContenedorCardRevistaComponent } from './cards/cards-para-lector/contenedor-card-revista/contenedor-card-revista.component';
+import { ResumenRevistaComponent } from './resumenes-de-revistas/resumen-revista/resumen-revista.component';
 import { PerfilComponent } from './perfil/perfil.component';
-import { SuscripcionFormComponent } from './suscripcion-form/suscripcion-form.component';
-import { AccesoARevistaComponent } from './acceso-arevista/acceso-arevista.component';
+import { SuscripcionFormComponent } from './forms/suscripcion-form/suscripcion-form.component';
+import { ResumenRevistaParaSuscriptorComponent } from './resumenes-de-revistas/resumen-revista-para-suscriptor/resumen-revista-para-suscriptor.component';
+import { MenuAdministrativoComponent } from './menus/menu-administrativo/menu-administrativo.component';
+import { ContenedorCardRevistaAdministradorComponent } from './cards/cards-para-administrador/contenedor-card-revista-administrador/contenedor-card-revista-administrador.component';
+import { ContenedorCardRevistaEditorComponent } from './cards/cards-usuario-editor/contenedor-card-revista-editor/contenedor-card-revista-editor.component';
+import { ResumenRevistaParaAdministradorComponent } from './resumenes-de-revistas/resumen-revista-para-administrador/resumen-revista-para-administrador.component';
+import { ResumenRevistaParaUsuarioEditorComponent } from './resumenes-de-revistas/resumen-revista-para-usuario-editor/resumen-revista-para-usuario-editor.component';
+import { CrearAnuncianteFormComponent } from './forms/anuncios/crear-anunciante-form/crear-anunciante-form.component';
+import { CrearAnuncioImagenFormComponent } from './forms/anuncios/crear-anuncio-imagen-form/crear-anuncio-imagen-form.component';
+import { CrearAnuncioVideoFormComponent } from './forms/anuncios/crear-anuncio-video-form/crear-anuncio-video-form.component';
+import { CrearAnuncioTextoFormComponent } from './forms/anuncios/crear-anuncio-texto-form/crear-anuncio-texto-form.component';
 
 const routes: Routes = [
   {
@@ -58,7 +67,7 @@ const routes: Routes = [
     },
     {
       path: "revista/:nombreRevista/:usuarioCreador",
-      component: AccesoARevistaComponent
+      component: ResumenRevistaParaSuscriptorComponent
     }]
   },
   {
@@ -72,7 +81,49 @@ const routes: Routes = [
     {
       path: "publicar-revista",
       component: FormSubirRevistasComponent
+    },
+    {
+      path: "revistas",
+      component: ContenedorCardRevistaEditorComponent
+    },
+    {
+      path: "configuracion/:nombreRevista/:usuarioCreador",
+      component: ResumenRevistaParaUsuarioEditorComponent,
     }]
+  },
+  {
+    path: "menu-administrativo",
+    component: MenuAdministrativoComponent,
+    children: [
+      {
+        path: "editar-perfil",
+        component: EditarPerfilFormComponent
+      },
+      {
+        path: "costo-revistas",
+        component: ContenedorCardRevistaAdministradorComponent
+      },
+      {
+        path: "costo/:nombreRevista/:usuarioCreador",
+        component: ResumenRevistaParaAdministradorComponent
+      },
+      {
+        path: "crear-anunciante",
+        component: CrearAnuncianteFormComponent,
+      },
+      {
+        path:"crear-anuncio/imagen-texto",
+        component: CrearAnuncioImagenFormComponent
+      },
+      {
+        path:"crear-anuncio/video-texto",
+        component: CrearAnuncioVideoFormComponent
+      },
+      {
+        path:"crear-anuncio/texto",
+        component: CrearAnuncioTextoFormComponent
+      }
+    ]
   }
 ];
 

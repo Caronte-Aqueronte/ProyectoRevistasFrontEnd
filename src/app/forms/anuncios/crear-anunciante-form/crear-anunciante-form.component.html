@@ -1,0 +1,30 @@
+<div class="container mt-5" style="width: 700px;">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="formCrearAnunciante" (ngSubmit)="guardarAnunciante()"
+                [ngClass]="{'was-validated': !formCrearAnunciante.pristine}">
+                <!--Seleccionador de archivos para el pdf de la revista-->
+                <div class="mb-3 mt-2">
+                    <label for="revista" class="paraLabels">Ingresa el nombre del anunciante</label>
+                    <input type="text" class="form-control" id="revista" formControlName="nombreAnunciante"
+                        placeholder="Nombre del anunciante">
+                </div>
+                <div [hidden]="!formCrearAnunciante.invalid || formCrearAnunciante.pristine" class="alert alert-danger mt-2" role="alert">
+                    El nombre del anunciante es requerido
+                </div>
+                <!--Boton que sube todo el formulario para ser controlado por el ts-->
+                <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
+                    [disabled]="formCrearAnunciante.invalid">
+                    Guardar anunciante
+                </button>
+                <!--Mensajes de confirmacion de la publicacion o no de ua revista-->
+                <div class="alert alert-danger mt-2" role="alert" [hidden]="!banderaError">
+                    {{mensajeConfirmacion}}
+                </div>
+                <div [hidden]="!banderaAcierto" class="alert alert-success mt-2" role="alert">
+                    {{mensajeConfirmacion}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

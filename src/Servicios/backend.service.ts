@@ -14,6 +14,8 @@ import { SolicitudInfoRevista } from 'src/Modelos/solicitud-info-revista';
 import { Suscripcion } from 'src/Modelos/suscripcion';
 import { InteraccionConRevista } from 'src/Modelos/interaccion-con-revista';
 import { Comentario } from 'src/Modelos/comentario';
+import { Pago } from 'src/Modelos/pago';
+import { Card } from 'src/Modelos/card';
 
 @Injectable({
   providedIn: 'root'
@@ -160,26 +162,37 @@ export class BackendService {
    * @param nombreUsuario 
    * @returns 
    */
-  public recomendarRevistas(nombreUsuario: string): Observable<Array<any>> {
+  public recomendarRevistas(nombreUsuario: string): Observable<Array<Card>> {
     //guardamos el header para indicar que accion debera relizar el backend
     let headers = new HttpHeaders().set('Accion', 'recomendarRevistas');
     let options = { headers: headers };
     //retornamos la respuesta que recibamos del backend
-    return this.httpClient.post<Array<any>>(this.API_URL + "ControladorAccionRevista", nombreUsuario, options);
+    return this.httpClient.post<Array<Card>>(this.API_URL + "ControladorAccionRevista", nombreUsuario, options);
   }
-
+  
+  /**
+   * Se comunica con el api en la espera de traer todas las revistas en la bd
+   * @returns 
+   */
+  public traerTodasLasRevistas(): Observable<Array<Card>> {
+    //guardamos el header para indicar que accion debera relizar el backend
+    let headers = new HttpHeaders().set('Accion', 'traerTodasLasRevistas');
+    let options = { headers: headers };
+    //retornamos la respuesta que recibamos del backend
+    return this.httpClient.post<Array<Card>>(this.API_URL + "ControladorAccionRevista", "", options);
+  }
   /**
    * Este metodo envia un post con un header accion que indica lo que el servidor debe hace, ademas adjunta
    * un string que representa la busqueda que realizo el usuario
    * @param busqueda 
    * @returns 
    */
-  public buscarPorCategoria(busqueda: string): Observable<Array<any>> {
+  public buscarPorCategoria(busqueda: string): Observable<Array<Card>> {
     //guardamos el header para indicar que accion debera relizar el backend
     let headers = new HttpHeaders().set('Accion', 'buscarPorCategoria');
     let options = { headers: headers };
     //retornamos la respuesta que recibamos del backend
-    return this.httpClient.post<Array<any>>(this.API_URL + "ControladorAccionRevista", busqueda, options);
+    return this.httpClient.post<Array<Card>>(this.API_URL + "ControladorAccionRevista", busqueda, options);
   }
 
   /**
@@ -188,12 +201,12 @@ export class BackendService {
    * @param busqueda 
    * @returns 
    */
-  public buscarPorTag(busqueda: string): Observable<Array<any>> {
+  public buscarPorTag(busqueda: string): Observable<Array<Card>> {
     //guardamos el header para indicar que accion debera relizar el backend
     let headers = new HttpHeaders().set('Accion', 'buscarPorTag');
     let options = { headers: headers };
     //retornamos la respuesta que recibamos del backend
-    return this.httpClient.post<Array<any>>(this.API_URL + "ControladorAccionRevista", busqueda, options);
+    return this.httpClient.post<Array<Card>>(this.API_URL + "ControladorAccionRevista", busqueda, options);
   }
 
   /**
@@ -201,12 +214,12 @@ export class BackendService {
    * @param nombreUsuario 
    * @returns 
    */
-  public verSuscripciones(nombreUsuario: string): Observable<Array<any>> {
+  public verSuscripciones(nombreUsuario: string): Observable<Array<Card>> {
     //guardamos el header para indicar que accion debera relizar el backend
     let headers = new HttpHeaders().set('Accion', 'verSuscripciones');
     let options = { headers: headers };
     //retornamos la respuesta que recibamos del backend
-    return this.httpClient.post<Array<any>>(this.API_URL + "ControladorAccionRevista", nombreUsuario, options);
+    return this.httpClient.post<Array<Card>>(this.API_URL + "ControladorAccionRevista", nombreUsuario, options);
   }
 
   public verSiUsuarioEstaSuscritoARevista(consulta: ConsultaSuscripcion): Observable<boolean> {
@@ -312,4 +325,14 @@ export class BackendService {
     //retornamos la respuesta que recibamos del backend
     return this.httpClient.post<Array<Comentario>>(this.API_URL + "ControladorAccionRevista", info, options);
   }
+
+  public realizarPago(pago: Pago): Observable<string> {
+    //guardamos el header para indicar que accion debera relizar el backend
+    let headers = new HttpHeaders().set('Accion', 'realizarPago');
+    let options = { headers: headers };
+    //retornamos la respuesta que recibamos del backend
+    return this.httpClient.post<string>(this.API_URL + "ControladorAccionRevista", pago, options);
+
+  }
+
 }
