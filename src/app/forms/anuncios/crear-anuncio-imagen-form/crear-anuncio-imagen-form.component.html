@@ -1,7 +1,7 @@
 <div class="container mt-5" style="width: 500px;">
     <div class="row">
         <div class="col-sm">
-            <form [formGroup]="formCrearAnunciante" (ngSubmit)="guardarAnuncioDeTexto()"
+            <form [formGroup]="formCrearAnunciante" (ngSubmit)="guardarAnuncioDeImagen()"
                 [ngClass]="{'was-validated': !formCrearAnunciante.pristine}">
                 <!--Seleccionador de el anunciante al que pertencese este anuncio-->
                 <div class="mb-3 mt-2">
@@ -9,7 +9,7 @@
                         <label class="paraLabels" for="cars">Selecciona un anunciante</label>
                     </div>
                     <div>
-                        <select name="cars" id="cars" formControlName="anunciante" class="mt-2" >
+                        <select name="cars" id="cars" formControlName="nombreAnunciante" class="mt-2">
                             <!--aqui generamos las distintas opciones del ComboBox apartir de un array que se inicializa con una peticion al backend -->
                             <option class="form-control" *ngFor="let anunciante of anunciantes"
                                 value="{{anunciante.nombreAnunciante}}">{{anunciante.nombreAnunciante}}</option>
@@ -21,7 +21,17 @@
                         <label class="paraLabels" for="cars">Nombre del anuncio</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control" id="nombreAnuncio" placeholder="Nombre del anuncio" formControlName="nombreAnuncio"/>
+                        <input type="text" class="form-control" id="nombreAnuncio" placeholder="Nombre del anuncio"
+                            formControlName="nombreAnuncio" />
+                    </div>
+                </div>
+                <div class="mb-3 mt-2">
+                    <div>
+                        <label class="paraLabels" for="cars">imagen del anuncio</label>
+                    </div>
+                    <div>
+                        <input type="file" accept=".png" class="form-control" id="nombreAnuncio" placeholder="Nombre del anuncio"
+                            formControlName="imagen"  (change)="imagenCambiada($event)"/>
                     </div>
                 </div>
                 <div class="mb-3 mt-2">
@@ -29,8 +39,28 @@
                         <label class="paraLabels" for="cars">Texto del anuncio</label>
                     </div>
                     <div>
-                        <input type="text" class="form-control" id="nombreAnuncio" placeholder="Nombre del anuncio" formControlName="textoAnuncio"/>
+                        <input type="text" class="form-control" id="nombreAnuncio" placeholder="Nombre del anuncio"
+                            formControlName="texto" />
                     </div>
+                </div>
+                <!--Estos son los tags que el usuario seleccionara-->
+                <div>
+                    <label for="tagsDisponibles" class="paraLabels mt-2">Tags disponibles</label>
+                    <div></div>
+                    <button *ngFor="let tag of tagsExistentes" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                        (click)="deTagExistenteATagAnuncio(tag.nombreTag)" class="btn btn-info"
+                        style="margin-left: 5px;">
+                        {{tag.nombreTag}}
+                    </button>
+                </div>
+                <div>
+                    <label for="tagsDisponibles" class="paraLabels mt-2">Tags para tu revista</label>
+                    <div></div>
+                    <button *ngFor="let tag of tagsAnuncios" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                        (click)="deTagAnuncioATagExistente(tag.nombreTag)" class="btn btn-info"
+                        style="margin-left: 5px;">
+                        {{tag.nombreTag}}
+                    </button>
                 </div>
                 <!--Boton que sube todo el formulario para ser controlado por el ts-->
                 <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
