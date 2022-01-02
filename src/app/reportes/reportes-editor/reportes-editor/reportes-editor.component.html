@@ -1,0 +1,32 @@
+<h2 class="titulo">Reportes</h2>
+<div class="input-group mb-3 divALaIzquierda" style="width: 500px; margin-left: 20px;">
+    <input type="text" class="form-control" placeholder="Filtrar por revista" name="revistaBusqueda"
+        id="revistaBusqueda">
+</div>
+<div class="divALaIzquierda" style="margin-left: 20px;">
+    <input type="date" id="primeraFecha" class="form-control">
+</div>
+<div class="divALaIzquierda" style="margin-left: 20px;">
+    <input type="date" id="segundaFecha" class="form-control">
+</div>
+<div style="clear: both; margin-left: 3cm;">
+    <div class="divALaIzquierda" style="margin-left: 20px; margin-top: 1cm;">
+        <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+            (click)="reporteComentarios()">Reporte de
+            comentarios en un intervalo de tiempo</button>
+    </div>
+    <div class="divALaIzquierda" style="margin-left: 20px;  margin-top: 1cm;">
+        <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+            (click)="reporteSuscripciones()">Reporte de
+            suscripciones en un intervalo de tiempo</button>
+    </div>
+    <div class="divALaIzquierda" style="margin-left: 20px;  margin-top: 1cm;">
+        <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+            (click)="reporteMasLikes()">Reporte
+            de revistas más gustadas en un intervalo de tiempo</button>
+    </div>
+    <div class="divALaIzquierda" style="margin-left: 20px;  margin-top: 1cm;">
+        <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+            (click)="reporteDeGanancias()">Reporte de ganancias en un intervalo de tiempo</button>
+    </div>
+</div>

@@ -1,0 +1,19 @@
+.cajaVideo{
+    width: 5cm;
+    height: 5cm;
+    margin-left: 1cm;
+}
+
+.texto{
+    font-weight: bold;
+}
+
+.tarjeta{
+    margin-top: 1cm;
+    margin-left: 3cm;
+    width: 10cm;
+    height: 9cm;
+    border: 4px solid rgba(0,0,0,.125);
+    border-radius: 1cm;
+    justify-content: center;
+}

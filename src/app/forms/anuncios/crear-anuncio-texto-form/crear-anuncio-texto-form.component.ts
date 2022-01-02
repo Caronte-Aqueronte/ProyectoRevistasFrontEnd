@@ -28,7 +28,7 @@ export class CrearAnuncioTextoFormComponent implements OnInit {
     this.formCrearAnunciante = this.formBuilder.group({//llenamos los validadores de los campos del form
       nombreAnuncio: ["", Validators.required],
       nombreAnunciante: ["", Validators.required],
-      texto: ["", Validators.required]
+      textoAnuncio: ["", Validators.required]
     });
     //mandamos a traer todos los anunciantes
     this.backendServiceConsultaAdministrativaService.traerAnunciantes().subscribe((anunciantes: Array<Anunciante>) => {

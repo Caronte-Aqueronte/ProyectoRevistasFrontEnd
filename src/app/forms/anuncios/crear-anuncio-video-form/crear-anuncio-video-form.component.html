@@ -1,1 +1,79 @@
-<p>crear-anuncio-video-form works!</p>
+<div class="container mt-5" style="width: 500px;">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="formCrearAnunciante" (ngSubmit)="guardarAnuncioDeTexto()"
+                [ngClass]="{'was-validated': !formCrearAnunciante.pristine}">
+                <!--Seleccionador de el anunciante al que pertencese este anuncio-->
+                <div class="mb-3 mt-2">
+                    <div>
+                        <label class="paraLabels" for="cars">Selecciona un anunciante</label>
+                    </div>
+                    <div>
+                        <select name="cars" id="cars" formControlName="nombreAnunciante" class="mt-2">
+                            <!--aqui generamos las distintas opciones del ComboBox apartir de un array que se inicializa con una peticion al backend -->
+                            <option class="form-control" *ngFor="let anunciante of anunciantes"
+                                value="{{anunciante.nombreAnunciante}}">{{anunciante.nombreAnunciante}}</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="mb-3 mt-2">
+                    <div>
+                        <label class="paraLabels" for="cars">Nombre del anuncio</label>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="nombreAnuncio" placeholder="Nombre del anuncio"
+                            formControlName="nombreAnuncio" />
+                    </div>
+                </div>
+                <div class="mb-3 mt-2">
+                    <div>
+                        <label class="paraLabels" for="cars">Texto del anuncio</label>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="textoAnuncio" placeholder="Texto del anuncio"
+                            formControlName="textoAnuncio" />
+                    </div>
+                </div>
+                <div class="mb-3 mt-2">
+                    <div>
+                        <label class="paraLabels" for="cars">Link al video</label>
+                    </div>
+                    <div>
+                        <input type="text" class="form-control" id="linkVideo" placeholder="Link del anuncio"
+                            formControlName="link" />
+                    </div>
+                </div>
+                <div>
+                    <label for="tagsDisponibles" class="paraLabels mt-2">Tags disponibles</label>
+                    <div></div>
+                    <button *ngFor="let tag of tagsExistentes" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                        (click)="deTagExistenteATagAnuncio(tag.nombreTag)" class="btn btn-info"
+                        style="margin-left: 5px;">
+                        {{tag.nombreTag}}
+                    </button>
+                </div>
+                <div>
+                    <label for="tagsDisponibles" class="paraLabels mt-2">Tags para tu revista</label>
+                    <div></div>
+                    <button *ngFor="let tag of tagsAnuncios" id="tagsDisponibles" name="tagsDisponibles" type="button"
+                        (click)="deTagAnuncioATagExistente(tag.nombreTag)" class="btn btn-info"
+                        style="margin-left: 5px;">
+                        {{tag.nombreTag}}
+                    </button>
+                </div>
+                <!--Boton que sube todo el formulario para ser controlado por el ts-->
+                <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
+                    [disabled]="formCrearAnunciante.invalid">
+                    Guardar anunciante
+                </button>
+                <!--Mensajes de confirmacion de la publicacion o no de ua revista-->
+                <div class="alert alert-danger mt-2" role="alert" [hidden]="!banderaError">
+                    {{mensajeConfirmacion}}
+                </div>
+                <div [hidden]="!banderaAcierto" class="alert alert-success mt-2" role="alert">
+                    {{mensajeConfirmacion}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

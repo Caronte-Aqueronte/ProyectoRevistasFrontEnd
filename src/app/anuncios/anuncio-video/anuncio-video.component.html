@@ -1,1 +1,12 @@
-<p>anuncio-video works!</p>
+<div class="tarjeta">   
+    <div style="margin-left: 1.4cm; margin-top: 1cm;">
+        <p class="texto">Anuncio</p>
+        <video [src]="urlSegura" loop="true" autoplay controls class="cajaVideo">
+            <source [src]="urlSegura" type="video/ogg">
+            <source [src]="urlSegura" type="video/mp4">
+            <source [src]="urlSegura" type="video/webm">
+        </video>
+        <textarea [value]="anuncio.textoAnuncio" style="width: 7cm;"></textarea>
+    </div>
+    
+</div>

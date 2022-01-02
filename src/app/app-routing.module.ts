@@ -22,6 +22,10 @@ import { CrearAnuncianteFormComponent } from './forms/anuncios/crear-anunciante-
 import { CrearAnuncioImagenFormComponent } from './forms/anuncios/crear-anuncio-imagen-form/crear-anuncio-imagen-form.component';
 import { CrearAnuncioVideoFormComponent } from './forms/anuncios/crear-anuncio-video-form/crear-anuncio-video-form.component';
 import { CrearAnuncioTextoFormComponent } from './forms/anuncios/crear-anuncio-texto-form/crear-anuncio-texto-form.component';
+import { ContenedorCardAnuncioComponent } from './cards/cards-anuncios/contenedor-card-anuncio/contenedor-card-anuncio.component';
+import { GuardMenuAdministradorGuard } from 'src/Guards/guard-menu-administrador.guard';
+import { ReportesEditorComponent } from './reportes/reportes-editor/reportes-editor/reportes-editor.component';
+import { ReportesAdministrativosComponent } from './reportes/reportes-administrativos/reportes-administrativos.component';
 
 const routes: Routes = [
   {
@@ -89,10 +93,15 @@ const routes: Routes = [
     {
       path: "configuracion/:nombreRevista/:usuarioCreador",
       component: ResumenRevistaParaUsuarioEditorComponent,
+    },
+    {
+      path: "reportes",
+      component: ReportesEditorComponent,
     }]
   },
   {
     path: "menu-administrativo",
+    canActivate: [GuardMenuAdministradorGuard],
     component: MenuAdministrativoComponent,
     children: [
       {
@@ -112,16 +121,24 @@ const routes: Routes = [
         component: CrearAnuncianteFormComponent,
       },
       {
-        path:"crear-anuncio/imagen-texto",
+        path: "crear-anuncio/imagen-texto",
         component: CrearAnuncioImagenFormComponent
       },
       {
-        path:"crear-anuncio/video-texto",
+        path: "crear-anuncio/video-texto",
         component: CrearAnuncioVideoFormComponent
       },
       {
-        path:"crear-anuncio/texto",
+        path: "crear-anuncio/texto",
         component: CrearAnuncioTextoFormComponent
+      },
+      {
+        path: "anuncios",
+        component: ContenedorCardAnuncioComponent
+      },
+      {
+        path: "reportes",
+        component: ReportesAdministrativosComponent
       }
     ]
   }

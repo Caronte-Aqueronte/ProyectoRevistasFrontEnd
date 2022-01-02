@@ -42,6 +42,10 @@ import { CrearAnuncioImagenFormComponent } from './forms/anuncios/crear-anuncio-
 import { CrearAnuncioTextoFormComponent } from './forms/anuncios/crear-anuncio-texto-form/crear-anuncio-texto-form.component';
 import { CrearAnuncianteFormComponent } from './forms/anuncios/crear-anunciante-form/crear-anunciante-form.component';
 import { CrearAnuncioVideoFormComponent } from './forms/anuncios/crear-anuncio-video-form/crear-anuncio-video-form.component';
+import { CardAnuncioComponent } from './cards/cards-anuncios/card-anuncio/card-anuncio.component';
+import { ContenedorCardAnuncioComponent } from './cards/cards-anuncios/contenedor-card-anuncio/contenedor-card-anuncio.component';
+import { ReportesEditorComponent } from './reportes/reportes-editor/reportes-editor/reportes-editor.component';
+import { ReportesAdministrativosComponent } from './reportes/reportes-administrativos/reportes-administrativos.component';
 
 @NgModule({
   declarations: [
@@ -83,6 +87,10 @@ import { CrearAnuncioVideoFormComponent } from './forms/anuncios/crear-anuncio-v
     CrearAnuncioImagenFormComponent,
     CrearAnuncioTextoFormComponent,
     CrearAnuncioVideoFormComponent,
+    CardAnuncioComponent,
+    ContenedorCardAnuncioComponent,
+    ReportesEditorComponent,
+    ReportesAdministrativosComponent,
   ],
   imports: [
     BrowserModule,

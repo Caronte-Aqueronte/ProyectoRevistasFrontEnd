@@ -37,10 +37,10 @@ export class FormLoginComponent implements OnInit {
               this.router.navigate(['menu-lector', 'revistas']);
               break;
             case "Editor":
-              this.router.navigate(['./', 'menu-editor']);
+              this.router.navigate(['menu-editor', 'revistas']);
               break;
             case "Administrativo":
-              this.router.navigate(['./', 'menu-administrativo']);
+              this.router.navigate(['menu-administrativo', 'anuncios']);
               break;
 
           }

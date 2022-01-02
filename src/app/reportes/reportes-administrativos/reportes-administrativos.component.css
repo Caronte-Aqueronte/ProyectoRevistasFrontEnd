@@ -1,0 +1,18 @@
+.tablero{
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    clear: both;
+}
+
+.titulo{
+    font-weight: bold;
+    margin-top: 20px;
+    margin-bottom: 7px;
+    margin-left: 20px;
+}
+
+.divALaIzquierda{
+    align-self: center;
+    float: left;
+}
