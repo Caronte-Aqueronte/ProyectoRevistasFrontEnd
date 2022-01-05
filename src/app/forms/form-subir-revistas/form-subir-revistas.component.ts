@@ -82,13 +82,12 @@ export class FormSubirRevistasComponent implements OnInit {
           //revisar si el mensaje de confirmacion es afirmativo para mandar a guardar los tags
           if(confirmacion == "Se publico tu revista \"" + nombreRevista + "\" con exito."){
             this.backendService.guardarTagsDeRevista(this.tagsRevistaAMandar).subscribe
-            ((confirmacionTags : string) => {
-              confirmacion += "\n"+ confirmacionTags;
-              this.mensajeDeAlerta = confirmacion;
+            ((confirmacionTags : string) => {              
             });
             //mostramos el mensaje de confirmacion          
             this.banderaAceptacion = true;
             this.banderaError = false;
+            this.mensajeDeAlerta = confirmacion;
           }else{//si el mensjae no es exitoso entonces mostramos el error
             this.mensajeDeAlerta = confirmacion;
             this.banderaError = true;

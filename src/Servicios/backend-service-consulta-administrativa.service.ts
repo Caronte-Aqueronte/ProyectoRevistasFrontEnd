@@ -60,7 +60,10 @@ export class BackendServiceConsultaAdministrativaService {
   public guardarAnuncioImagen(anuncio: AnuncioImagen): Observable<string>{
     const formData: FormData = new FormData;//este sera el objeto que guardara la informacion del form (con la imagen)
     formData.append("texto", anuncio.textoAnuncio); //guardamos el texto del anuncio
+    if(anuncio.imagen != null){
     formData.append("imagen", anuncio.imagen); //guardamos la imagen del anuncio
+    }
+    
     formData.append("nombreAnuncio", anuncio.nombreAnuncio); //guardamos el nombreAnuncio del anuncio
     formData.append("nombreAnunciante", anuncio.nombreAnunciante); //guardamos el nombreAnunciante del anuncio
     let headers = new HttpHeaders().set('Accion', 'guardarAnuncioImagen');//agregamos el header que indica que accion realizara la api

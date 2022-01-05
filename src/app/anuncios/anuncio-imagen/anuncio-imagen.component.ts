@@ -15,6 +15,7 @@ export class AnuncioImagenComponent implements OnInit {
   public anuncio!: AnuncioImagen;//anuncio que traeremos de la api
   constructor(private backendServiceConsultaAdministrativaService: BackendServiceConsultaAdministrativaService
     , private cookiesService: CookieService) { 
+      this.anuncio = new AnuncioImagen("","","",null);
     }
 
   ngOnInit(): void {

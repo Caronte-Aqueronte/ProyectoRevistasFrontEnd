@@ -21,6 +21,8 @@
         </div>
     </div>
 </div>
+
+
 <div style="clear: both; margin-top: 3cm;">
     <h2 class="titulo">Reportes que puedes filtrar por anunciante</h2>
     <div class="input-group mb-3 divALaIzquierda" style="width: 500px; margin-left: 20px;">
@@ -40,18 +42,38 @@
         </div>
     </div>
 </div>
+
+
 <div style="clear: both; margin-top: 3cm;">
     <h2 class="titulo">Reportes solo en un intervalo de tiempo</h2>
     <div class="divALaIzquierda" style="margin-left: 20px;">
-        <input type="date" id="primeraFechaAnunciante" class="form-control">
+        <input type="date" id="pF" class="form-control">
     </div>
     <div class="divALaIzquierda" style="margin-left: 20px;">
-        <input type="date" id="segundaFechaAnunciante" class="form-control">
+        <input type="date" id="sF" class="form-control">
     </div>
     <div style="clear: both; margin-left: 3cm;">
         <div class="divALaIzquierda" style="margin-left: 20px; margin-top: 1cm;">
             <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
-                (click)="gananciasPorRevistas()">Reporte de ganancias por revista en un intervalo de tiempo</button>
+                (click)="gananciasTotales()">Reporte de ganancias totales</button>
+        </div>
+        <div class="divALaIzquierda" style="margin-left: 20px; margin-top: 1cm;">
+            <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+                (click)="revistasMasPopulares()">Reporte de las 5 revistas más populares en un intervalo de
+                tiempo</button>
+        </div>
+        <div class="divALaIzquierda" style="margin-left: 20px; margin-top: 1cm;">
+            <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+                (click)="revistasMasComentadas()">Reporte de las 5 revistas más comentadas en un intervalo de
+                tiempo</button>
+        </div>
+        <div class="divALaIzquierda" style="margin-left: 20px; margin-top: 1cm;">
+            <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+                (click)="reporteAnuncios()">Reporte de anuncios</button>
+        </div>
+        <div class="divALaIzquierda" style="margin-left: 20px; margin-top: 1cm;">
+            <button class="btn btn-outline-secondary" type="button" id="btnVerRecomendadas"
+                (click)="reporteEfectividad()">Reporte de efectividad de anuncios por anunciante</button>
         </div>
     </div>
 </div>
