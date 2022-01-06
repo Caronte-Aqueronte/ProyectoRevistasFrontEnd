@@ -26,6 +26,7 @@ import { ContenedorCardAnuncioComponent } from './cards/cards-anuncios/contenedo
 import { GuardMenuAdministradorGuard } from 'src/Guards/guard-menu-administrador.guard';
 import { ReportesEditorComponent } from './reportes/reportes-editor/reportes-editor/reportes-editor.component';
 import { ReportesAdministrativosComponent } from './reportes/reportes-administrativos/reportes-administrativos.component';
+import { CrearTagYCategoriaFormComponent } from './forms/crear-tag-ycategoria-form/crear-tag-ycategoria-form.component';
 
 const routes: Routes = [
   {
@@ -139,6 +140,10 @@ const routes: Routes = [
       {
         path: "reportes",
         component: ReportesAdministrativosComponent
+      },
+      {
+        path:"crear-tag-o-revista",
+        component: CrearTagYCategoriaFormComponent
       }
     ]
   }

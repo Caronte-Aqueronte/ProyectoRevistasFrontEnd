@@ -46,6 +46,7 @@ import { CardAnuncioComponent } from './cards/cards-anuncios/card-anuncio/card-a
 import { ContenedorCardAnuncioComponent } from './cards/cards-anuncios/contenedor-card-anuncio/contenedor-card-anuncio.component';
 import { ReportesEditorComponent } from './reportes/reportes-editor/reportes-editor/reportes-editor.component';
 import { ReportesAdministrativosComponent } from './reportes/reportes-administrativos/reportes-administrativos.component';
+import { CrearTagYCategoriaFormComponent } from './forms/crear-tag-ycategoria-form/crear-tag-ycategoria-form.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { ReportesAdministrativosComponent } from './reportes/reportes-administra
     ContenedorCardAnuncioComponent,
     ReportesEditorComponent,
     ReportesAdministrativosComponent,
+    CrearTagYCategoriaFormComponent,
   ],
   imports: [
     BrowserModule,

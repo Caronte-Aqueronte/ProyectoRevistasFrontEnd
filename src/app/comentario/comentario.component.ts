@@ -12,7 +12,7 @@ export class ComentarioComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-    this.urlFotoPerfil += "?nombreUsuario=" + this.datosComentario.usuarioCreador;
+    this.urlFotoPerfil += "?nombreUsuario=" + this.datosComentario.nombreUsuarioComentador;
   }
 
 }

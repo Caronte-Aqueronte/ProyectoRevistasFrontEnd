@@ -6,6 +6,7 @@ import { Anuncio } from 'src/Modelos/anuncio';
 import { AnuncioImagen } from 'src/Modelos/anuncio-imagen';
 import { AnuncioTexto } from 'src/Modelos/anuncio-texto';
 import { AnuncioVideo } from 'src/Modelos/anuncio-video';
+import { Categoria } from 'src/Modelos/categoria';
 import { CostoPorDia } from 'src/Modelos/costo-por-dia';
 import { HistorialAnuncio } from 'src/Modelos/historial-anuncio';
 import { SolicitudInfoRevista } from 'src/Modelos/solicitud-info-revista';
@@ -108,5 +109,17 @@ export class BackendServiceConsultaAdministrativaService {
     let headers = new HttpHeaders().set('Accion', 'guardarHistorial');//agregamos el header que indica que accion realizara la api
     let options = { headers: headers };
     return this.httpClient.post<AnuncioImagen>(this.API_URL + "ConstroladorConsultaAdminstrativa", historial, options);
+  }
+
+  public guardarCategoria(categoria:Categoria): Observable<string>{
+    let headers = new HttpHeaders().set('Accion', 'guardarCategoria');//agregamos el header que indica que accion realizara la api
+    let options = { headers: headers };
+    return this.httpClient.post<string>(this.API_URL + "ConstroladorConsultaAdminstrativa", categoria, options);
+  }
+
+  public guardarTag(tag:Tag): Observable<string>{
+    let headers = new HttpHeaders().set('Accion', 'guardarTag');//agregamos el header que indica que accion realizara la api
+    let options = { headers: headers };
+    return this.httpClient.post<string>(this.API_URL + "ConstroladorConsultaAdminstrativa", tag, options);
   }
 }

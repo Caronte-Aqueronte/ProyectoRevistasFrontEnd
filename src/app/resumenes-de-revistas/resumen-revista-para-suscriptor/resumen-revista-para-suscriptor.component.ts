@@ -106,7 +106,7 @@ export class ResumenRevistaParaSuscriptorComponent implements OnInit {
     var contenidoComentario: string = ((document.getElementById("comentario") as HTMLInputElement)).value;
     //construimos un objeto Comentario con los datos obtenidos
     if (this.nombreRevista != null && this.nombreUsuarioCreador != null) {
-      const comentario = new Comentario(contenidoComentario, this.nombreRevista, this.nombreUsuarioCreador);
+      const comentario = new Comentario(contenidoComentario, this.nombreRevista, this.nombreUsuarioCreador, this.cookiesService.get('Usuario'));
       //mandamos a insertar el nuevo comentario
       this.backendService.hacerComentario(comentario).subscribe((confirmacion: string) => {
         if (confirmacion == "Se inserto tu comentario con exito.") {

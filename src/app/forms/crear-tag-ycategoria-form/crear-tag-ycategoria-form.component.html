@@ -1,0 +1,59 @@
+<div class="container mt-5" style="width: 500px;">
+    <div class="row">
+        <div class="col-sm">
+            <form [formGroup]="formCrearCategoria" (ngSubmit)="guardarCategoria()"
+                [ngClass]="{'was-validated': !formCrearCategoria.pristine}">
+                <!--Seleccionador de archivos para el pdf de la revista-->
+                <div class="mb-3 mt-2">
+                    <label for="revista" class="paraLabels">Ingresa el nombre de la categoria</label>
+                    <input type="text" class="form-control" id="revista" formControlName="nombreCategoria"
+                        placeholder="Nombre de la categoria">
+                </div>
+                <div [hidden]="!formCrearCategoria.invalid || formCrearCategoria.pristine"
+                    class="alert alert-danger mt-2" role="alert">
+                    El nombre de la categoria es requerido.
+                </div>
+                <!--Boton que sube todo el formulario para ser controlado por el ts-->
+                <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
+                    [disabled]="formCrearCategoria.invalid">
+                    Guardar categoria
+                </button>
+                <!--Mensajes de confirmacion de la publicacion o no de ua revista-->
+                <div class="alert alert-danger mt-2" role="alert" [hidden]="!banderaErrorCategorias">
+                    {{mensajeCategorias}}
+                </div>
+                <div [hidden]="!banderaAciertoCategorias" class="alert alert-success mt-2" role="alert">
+                    {{mensajeCategorias}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="container mt-5" style="width: 500px;">
+    <div class="col-sm">
+        <form [formGroup]="formCrearTag" (ngSubmit)="guardarTag()"
+            [ngClass]="{'was-validated': !formCrearTag.pristine}">
+            <!--Seleccionador de archivos para el pdf de la revista-->
+            <div class="mb-3 mt-2">
+                <label for="revista" class="paraLabels">Ingresa el nombre del tag</label>
+                <input type="text" class="form-control" id="revista" formControlName="nombreTag"
+                    placeholder="Nombre del tag">
+            </div>
+            <div [hidden]="!formCrearTag.invalid || formCrearTag.pristine" class="alert alert-danger mt-2" role="alert">
+                El nombre del tag es requerido
+            </div>
+            <!--Boton que sube todo el formulario para ser controlado por el ts-->
+            <button type="submit" name="btnEntrar" class="btn btn-outline-primary mt-3"
+                [disabled]="formCrearTag.invalid">
+                Guardar tag
+            </button>
+            <!--Mensajes de confirmacion de la publicacion o no de ua revista-->
+            <div class="alert alert-danger mt-2" role="alert" [hidden]="!banderaErrorTags">
+                {{mensajeTags}}
+            </div>
+            <div [hidden]="!banderaAciertoTags" class="alert alert-success mt-2" role="alert">
+                {{mensajeTags}}
+            </div>
+        </form>
+    </div>
+</div>
